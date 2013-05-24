@@ -38,7 +38,7 @@ module Graylog2Rails
         Rails.logger.info "[GRAYLOG] [#{Time.now.utc.to_datetime}] #{args.inspect}"
 
         unless Rails.env.development? || Rails.env.test?
-          notifier = GELF::Notifier.new(@args.delete("hostname"), @args.delete("port"), @args.delete("max_chunk_size"))
+          notifier = GELF::Notifier.new(@args.delete("host"), @args.delete("port"), @args.delete("max_chunk_size"))
           notifier.notify!(args)
         end
       rescue => i_err
